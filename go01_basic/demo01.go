@@ -142,7 +142,29 @@ func getTarget(arr [5]int, total int) {
 	}
 }
 
+func sliceMethod() {
+	// 1.
+	var numberList []int
+	fmt.Println(numberList)
+
+	// 2.
+	var numberListEmpty = []int{}
+	fmt.Println(numberListEmpty)
+
+	// 3.
+	numList := make([]int, 2, 5)
+	fmt.Println(numList)
+	fmt.Println(len(numList))
+	fmt.Println(cap(numList))
+	// 指针：是指向第一个切片元素对应的底层数组元素的地址。（切片的第一个元素不一定是数组中的第一个元素）
+	// 长度：切片的元素个数
+	// 容量：从切片的开始位置到底层数组的结尾位置
+
+	arr := [5]string{"Hello", "World", "Jack", "How", "Are"}
+	var s1 = arr[1:4]
+	fmt.Println(s1)
+	fmt.Println(arr)
+}
 func main() {
-	arr := [5]int{1, 3, 4, 6, 8}
-	getTarget(arr, 9)
+	sliceMethod()
 }
