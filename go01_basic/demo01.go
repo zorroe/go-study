@@ -165,6 +165,103 @@ func sliceMethod() {
 	fmt.Println(s1)
 	fmt.Println(arr)
 }
+
+func emptySlice() {
+	var numberList []int
+	fmt.Println(numberList == nil)
+	fmt.Println(len(numberList) == 0)
+}
+
+func modifySlice() {
+	var arr = [...]string{"Go", "Java", "PHP", "Python"}
+	s := arr[:]
+
+	fmt.Println(arr)
+	fmt.Println(s)
+	s[0] = "Ruby"
+	fmt.Println(arr)
+	fmt.Println(s)
+}
+
+func appendSlice() {
+	s := []string{"Go"}
+	fmt.Println(cap(s))
+	//追加一个元素
+	s = append(s, "Java")
+	fmt.Println(cap(s))
+	//追加两个元素
+	s = append(s, "C", "C++")
+	fmt.Println(cap(s))
+	//追加一个切片
+	s = append(s, []string{"Rust", "PHP"}...)
+	fmt.Println(cap(s))
+	fmt.Println(s)
+}
+
+func mSlice() {
+	var s = [][]string{{"1", "Java"}, {"2", "Python"}, {"3", "Go"}}
+	fmt.Println(s)
+}
+
+func createMap() {
+	// make(map[keyType]valueType)
+	steps1 := make(map[string]string)
+	fmt.Println(steps1)
+
+	steps2 := make(map[string]int)
+	fmt.Println(steps2)
+
+	var step3 map[string]string = map[string]string{
+		"name":   "Jack",
+		"gender": "female",
+		"score":  "80",
+	}
+	fmt.Println(step3)
+
+	step4 := make(map[string]string)
+	fmt.Println(step4)
+}
+
+func mapMethod() {
+	var steps map[string]string = map[string]string{
+		"name":   "Jack",
+		"gender": "female",
+		"score":  "80",
+	}
+	fmt.Println(steps)
+	steps["email"] = "131@qq.com"
+	fmt.Println(steps)
+	steps["email"] = "222@153.com"
+	fmt.Println(steps["email"])
+	delete(steps, "email")
+
+	k1, v1 := steps["email"]
+	fmt.Println(k1, v1)
+	k2, v2 := steps["name"]
+	fmt.Println(k2, v2)
+
+	for key, value := range steps {
+		fmt.Println(key, value)
+	}
+}
+
+func mapByReference() {
+	var steps map[string]string = map[string]string{
+		"name":   "Jack",
+		"gender": "female",
+		"score":  "80",
+	}
+
+	steps2 := steps
+
+	steps2["name"] = "Lucy"
+	steps2["gender"] = "male"
+	steps2["score"] = "99"
+
+	fmt.Println(steps)
+	fmt.Println(steps2)
+}
+
 func main() {
-	sliceMethod()
+	mapByReference()
 }
